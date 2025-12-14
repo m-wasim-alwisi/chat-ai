@@ -1,15 +1,13 @@
 "use client";
 
-
-import ChatSidebar from "@/components/ChatSidebar"; // Add your sidebar component
-
-
+import Page from "@/pages/chat/page"; // Add your sidebar component
 
 export default function ChatPage() {
   
   return (
     <>
-      <ChatSidebar />
+      
+      <Page/>
         </>
   );
 }
