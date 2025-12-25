@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
-  // apiKey: process.env.GEMINI_API_KEY!,
-  apiKey: 'AIzaSyAX9KwPRAxEkYFZ3g2OmSdJ799Q11Kd1LE',
+  apiKey: process.env.GEMINI_API_KEY!,
+  // apiKey: 'AIzaSyAX9KwPRAxEkYFZ3g2OmSdJ799Q11Kd1LE',
 });
 
 export async function POST(req: Request) {
@@ -23,19 +23,18 @@ export async function POST(req: Request) {
     const reply =
       response.candidates?.[0]?.content?.parts?.[0]?.text ??
       "No response";
-
+    
     return NextResponse.json({ reply });
   } 
   
   catch (error: unknown) {
-  console.error(error);
-
-  let message = "Internal error";
+  
+    let message = "Internal error";
 
   if (error instanceof Error) {
     message = error.message;
   }
-
+  
   return NextResponse.json({ reply: message }, { status: 500 });
 }
 }
